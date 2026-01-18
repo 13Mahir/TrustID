@@ -55,8 +55,8 @@ export function ConsentCenter() {
   const fetchData = async () => {
     try {
       const [resReq, resAct] = await Promise.all([
-        fetch('http://localhost:5001/api/consents/my-requests', { headers: { 'Authorization': `Bearer ${token}` } }),
-        fetch('http://localhost:5001/api/consents/my-active', { headers: { 'Authorization': `Bearer ${token}` } })
+        fetch('/api/consents/my-requests', { headers: { 'Authorization': `Bearer ${token}` } }),
+        fetch('/api/consents/my-active', { headers: { 'Authorization': `Bearer ${token}` } })
       ]);
 
       const jsonReq = await resReq.json();
@@ -89,7 +89,7 @@ export function ConsentCenter() {
     if (!activeRequest) return;
 
     try {
-      const res = await fetch(`http://localhost:5001/api/consents/${activeRequest.id}/approve`, {
+      const res = await fetch(`/api/consents/${activeRequest.id}/approve`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify({ duration_days: parseInt(selectedDuration) || 30 })
@@ -109,7 +109,7 @@ export function ConsentCenter() {
     if (!activeRequest) return;
 
     try {
-      const res = await fetch(`http://localhost:5001/api/consents/${activeRequest.id}/revoke`, {
+      const res = await fetch(`/api/consents/${activeRequest.id}/revoke`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -126,7 +126,7 @@ export function ConsentCenter() {
   const confirmRevoke = async () => {
     if (!revokeId) return;
     try {
-      await fetch(`http://localhost:5001/api/consents/${revokeId}/revoke`, {
+      await fetch(`/api/consents/${revokeId}/revoke`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` }
       });

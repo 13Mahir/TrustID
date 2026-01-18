@@ -166,12 +166,12 @@ export function ServiceDashboard() {
 
             try {
                 // Fetch Requests (Sent)
-                const resReq = await fetch('http://localhost:5001/api/consents/sent', { headers: { 'Authorization': `Bearer ${token}` } });
+                const resReq = await fetch('/api/consents/sent', { headers: { 'Authorization': `Bearer ${token}` } });
                 const jsonReq = await resReq.json();
                 if (jsonReq.success) setSentRequests(jsonReq.requests);
 
                 // Fetch Audit Logs (My Actions)
-                const resLogs = await fetch('http://localhost:5001/api/audit/my-actions', { headers: { 'Authorization': `Bearer ${token}` } });
+                const resLogs = await fetch('/api/audit/my-actions', { headers: { 'Authorization': `Bearer ${token}` } });
                 const jsonLogs = await resLogs.json();
                 if (jsonLogs.success) setAuditLogs(jsonLogs.logs);
 

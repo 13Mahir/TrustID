@@ -42,8 +42,8 @@ export function AdminDashboard() {
         const token = sessionStorage.getItem("auth_token");
         try {
             const [resEnt, resCas] = await Promise.all([
-                fetch('http://localhost:5001/api/admin/entities', { headers: { 'Authorization': `Bearer ${token}` } }),
-                fetch('http://localhost:5001/api/workflows', { headers: { 'Authorization': `Bearer ${token}` } })
+                fetch('/api/admin/entities', { headers: { 'Authorization': `Bearer ${token}` } }),
+                fetch('/api/workflows', { headers: { 'Authorization': `Bearer ${token}` } })
             ]);
 
             const jsonEnt = await resEnt.json();
@@ -53,12 +53,12 @@ export function AdminDashboard() {
             if (jsonCas.success) setCases(Array.isArray(jsonCas.cases) ? jsonCas.cases : []);
 
             // Fetch Logs
-            const resLogs = await fetch('http://localhost:5001/api/admin/audit-logs', { headers: { 'Authorization': `Bearer ${token}` } });
+            const resLogs = await fetch('/api/admin/audit-logs', { headers: { 'Authorization': `Bearer ${token}` } });
             const jsonLogs = await resLogs.json();
             if (jsonLogs.success) setLogs(jsonLogs.logs || []);
 
             // Fetch Settings
-            const resSet = await fetch('http://localhost:5001/api/admin/settings', { headers: { 'Authorization': `Bearer ${token}` } });
+            const resSet = await fetch('/api/admin/settings', { headers: { 'Authorization': `Bearer ${token}` } });
             const jsonSet = await resSet.json();
             if (jsonSet.success) setSettings(jsonSet.settings || []);
 
@@ -82,7 +82,7 @@ export function AdminDashboard() {
     const updateStatus = async (id: string, status: string) => {
         const token = sessionStorage.getItem("auth_token");
         try {
-            const res = await fetch(`http://localhost:5001/api/admin/entity/${id}/status`, {
+            const res = await fetch(`/api/admin/entity/${id}/status`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify({ status })
@@ -97,7 +97,7 @@ export function AdminDashboard() {
 
     const govAction = async (id: string, action: string) => {
         const token = sessionStorage.getItem("auth_token");
-        await fetch(`http://localhost:5001/api/workflows/${id}/${action}`, {
+        await fetch(`/api/workflows/${id}/${action}`, {
             method: 'POST',
             headers: { 'Authorization': `Bearer ${token}` }
         });

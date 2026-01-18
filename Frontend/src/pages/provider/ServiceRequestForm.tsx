@@ -64,7 +64,7 @@ export function ServiceRequestForm() {
         setLoading(true);
 
         try {
-            const res = await fetch('http://localhost:5001/api/consents/request', {
+            const res = await fetch('/api/consents/request', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

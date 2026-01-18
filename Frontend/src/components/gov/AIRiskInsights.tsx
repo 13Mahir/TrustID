@@ -46,7 +46,7 @@ export const AIRiskInsights: React.FC<AIRiskInsightsProps> = ({ stats }) => {
                 setRiskLevel(riskProfile.riskLevel);
 
                 // 2. AI Explanation of the Risk
-                const res = await fetch('http://localhost:5001/api/ai/explain-risk', {
+                const res = await fetch('/api/ai/explain-risk', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

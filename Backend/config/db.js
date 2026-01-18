@@ -3,14 +3,18 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const pool = mysql.createPool({
-    host: process.env.DB_HOST || 'localhost',
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || 'password', // User needs to set this
-    database: process.env.DB_NAME || 'trustid_platform',
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0
-});
+const pool = mysql.createPool(
+    process.env.DATABASE_URL
+        ? process.env.DATABASE_URL
+        : {
+            host: process.env.DB_HOST || 'localhost',
+            user: process.env.DB_USER || 'root',
+            password: process.env.DB_PASSWORD || 'password', // User needs to set this
+            database: process.env.DB_NAME || 'trustid_platform',
+            waitForConnections: true,
+            connectionLimit: 10,
+            queueLimit: 0
+        }
+);
 
 module.exports = pool.promise();

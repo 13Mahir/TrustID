@@ -71,7 +71,7 @@ export function RegistrationPage() {
 
 
         try {
-            const response = await fetch('http://localhost:5001/api/auth/register-citizen', {
+            const response = await fetch('/api/auth/register-citizen', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

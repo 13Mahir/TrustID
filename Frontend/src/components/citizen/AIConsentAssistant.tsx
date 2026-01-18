@@ -26,7 +26,7 @@ export const AIConsentAssistant: React.FC<AIConsentAssistantProps> = ({ request,
                 const token = sessionStorage.getItem('token');
                 if (!token) throw new Error("No session");
 
-                const res = await fetch('http://localhost:5001/api/ai/explain', {
+                const res = await fetch('/api/ai/explain', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

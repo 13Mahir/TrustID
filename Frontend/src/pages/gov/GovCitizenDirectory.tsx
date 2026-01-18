@@ -20,7 +20,7 @@ export function GovCitizenDirectory() {
             setLoading(true);
             const token = sessionStorage.getItem("auth_token");
             try {
-                const res = await fetch('http://localhost:5001/api/admin/entities', {
+                const res = await fetch('/api/admin/entities', {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
                 const json = await res.json();

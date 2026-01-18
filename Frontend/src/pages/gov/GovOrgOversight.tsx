@@ -32,7 +32,7 @@ export function GovOrgOversight() {
         setLoading(true);
         const token = sessionStorage.getItem("auth_token");
         try {
-            const res = await fetch('http://localhost:5001/api/admin/entities', {
+            const res = await fetch('/api/admin/entities', {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const json = await res.json();
@@ -55,7 +55,7 @@ export function GovOrgOversight() {
     const updateStatus = async (id: string, status: string) => {
         const token = sessionStorage.getItem("auth_token");
         try {
-            await fetch(`http://localhost:5001/api/admin/entity/${id}/status`, {
+            await fetch(`/api/admin/entity/${id}/status`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify({ status })

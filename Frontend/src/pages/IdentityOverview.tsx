@@ -138,7 +138,7 @@ export function IdentityOverview() {
 
       try {
         // Get Full Profile using Verified ID
-        const profileRes = await fetch(`http://localhost:5001/api/auth/profile?unique_id=${user.identityId}`, {
+        const profileRes = await fetch(`/api/auth/profile?unique_id=${user.identityId}`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         const profileData = await profileRes.json();
@@ -291,17 +291,17 @@ export function IdentityOverview() {
 
       try {
         // 1. Pending Requests
-        const reqRes = await fetch("http://localhost:5001/api/consents/my-requests", { headers: { Authorization: `Bearer ${token}` } });
+        const reqRes = await fetch("/api/consents/my-requests", { headers: { Authorization: `Bearer ${token}` } });
         const reqData = await reqRes.json();
         if (reqData.success) setPendingRequests(reqData.requests);
 
         // 2. Active Consents (Outbox/Active)
-        const activeRes = await fetch("http://localhost:5001/api/consents/my-active", { headers: { Authorization: `Bearer ${token}` } });
+        const activeRes = await fetch("/api/consents/my-active", { headers: { Authorization: `Bearer ${token}` } });
         const activeData = await activeRes.json();
         if (activeData.success) setActiveConsents(activeData.consents);
 
         // 3. History (Audit Logs)
-        const logRes = await fetch("http://localhost:5001/api/audit/my-data-access", { headers: { Authorization: `Bearer ${token}` } });
+        const logRes = await fetch("/api/audit/my-data-access", { headers: { Authorization: `Bearer ${token}` } });
         const logData = await logRes.json();
         if (logData.success) setAccessLogs(logData.logs);
 

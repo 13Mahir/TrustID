@@ -57,7 +57,7 @@ export function ClinicalVerificationView() {
         const fetchData = async () => {
             const token = sessionStorage.getItem("auth_token");
             try {
-                const res = await fetch(`http://localhost:5001/api/citizen/data?target_id=${targetId}`, {
+                const res = await fetch(`/api/citizen/data?target_id=${targetId}`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
 

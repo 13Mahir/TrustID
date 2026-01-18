@@ -55,7 +55,7 @@ export function LoginPage() {
     setError("");
 
     try {
-      const response = await fetch('http://localhost:5001/api/auth/send-otp', {
+      const response = await fetch('/api/auth/send-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ mobile: identityId.trim() })
@@ -86,7 +86,7 @@ export function LoginPage() {
     setError("");
 
     try {
-      const response = await fetch('http://localhost:5001/api/auth/verify-otp', {
+      const response = await fetch('/api/auth/verify-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -99,7 +99,7 @@ export function LoginPage() {
 
       if (data.success) {
         // Check if user exists
-        const checkResponse = await fetch('http://localhost:5001/api/auth/check-citizen', {
+        const checkResponse = await fetch('/api/auth/check-citizen', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ mobile: identityId.trim() })
@@ -131,7 +131,7 @@ export function LoginPage() {
 
   const sendTwoFactor = async (role: string, id: string, type: 'SERVICE' | 'GOV') => {
     try {
-      const response = await fetch('http://localhost:5001/api/auth/send-2fa', {
+      const response = await fetch('/api/auth/send-2fa', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ actor_id: id, actor_type: type })
@@ -158,7 +158,7 @@ export function LoginPage() {
     setError("");
 
     try {
-      const response = await fetch('http://localhost:5001/api/auth/verify-2fa', {
+      const response = await fetch('/api/auth/verify-2fa', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ actor_id: pendingEntityRole.id, code: twoFactorCode.toUpperCase() })

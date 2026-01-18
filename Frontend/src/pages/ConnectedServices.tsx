@@ -22,7 +22,7 @@ export function ConnectedServices() {
       if (!token) return;
 
       try {
-        const res = await fetch("http://localhost:5001/api/consents/my-active", { headers: { Authorization: `Bearer ${token}` } });
+        const res = await fetch("/api/consents/my-active", { headers: { Authorization: `Bearer ${token}` } });
         const data = await res.json();
         if (data.success) {
           setActiveServices(data.consents);

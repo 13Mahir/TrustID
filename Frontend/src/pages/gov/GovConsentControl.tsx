@@ -9,7 +9,7 @@ export function GovConsentControl() {
         const fetchConsents = async () => {
             const token = sessionStorage.getItem("auth_token");
             try {
-                const res = await fetch('http://localhost:5001/api/consents/sent', {
+                const res = await fetch('/api/consents/sent', {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
                 const json = await res.json();

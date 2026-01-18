@@ -21,9 +21,9 @@ export function GovernmentDashboard() {
             try {
                 // Parallel Fetch
                 const [resEnt, resCas, resCon] = await Promise.all([
-                    fetch('http://localhost:5001/api/admin/entities', { headers: { 'Authorization': `Bearer ${token}` } }),
-                    fetch('http://localhost:5001/api/workflows', { headers: { 'Authorization': `Bearer ${token}` } }),
-                    fetch('http://localhost:5001/api/consents/sent', { headers: { 'Authorization': `Bearer ${token}` } })
+                    fetch('/api/admin/entities', { headers: { 'Authorization': `Bearer ${token}` } }),
+                    fetch('/api/workflows', { headers: { 'Authorization': `Bearer ${token}` } }),
+                    fetch('/api/consents/sent', { headers: { 'Authorization': `Bearer ${token}` } })
                 ]);
 
                 const [ent, cas, con] = await Promise.all([resEnt.json(), resCas.json(), resCon.json()]);

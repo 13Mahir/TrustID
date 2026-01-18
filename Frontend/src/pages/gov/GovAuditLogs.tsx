@@ -65,7 +65,7 @@ export function GovAuditLogs() {
             setLoading(true);
             const token = sessionStorage.getItem("auth_token");
             try {
-                const res = await fetch('http://localhost:5001/api/admin/audit-logs', {
+                const res = await fetch('/api/admin/audit-logs', {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
                 const json = await res.json();
