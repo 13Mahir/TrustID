@@ -14,7 +14,7 @@ const generateExplanation = async (prompt) => {
         const result = await model.generateContent({
             contents: [{ role: "user", parts: [{ text: prompt }] }],
             generationConfig: {
-                maxOutputTokens: 150,
+                maxOutputTokens: 1000,
                 temperature: 0.1, // Deterministic
             },
         });

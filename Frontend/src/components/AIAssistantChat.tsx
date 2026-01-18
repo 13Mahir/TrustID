@@ -183,7 +183,7 @@ export const AIAssistantChat: React.FC<AIAssistantChatProps> = ({ context }) => 
                                         className={`max-w-[80%] p-3 rounded-lg text-sm ${msg.role === 'user'
                                             ? 'bg-indigo-600 text-white rounded-br-none'
                                             : 'bg-white border border-slate-200 text-slate-700 shadow-sm rounded-bl-none dark:bg-slate-800 dark:border-slate-700 dark:text-slate-300'
-                                            }`}
+                                            } whitespace-pre-wrap break-words`}
                                     >
                                         {msg.text}
                                     </div>
