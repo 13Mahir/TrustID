@@ -86,7 +86,6 @@ Ensure you have a MySQL instance running. Create a database named `trustid_platf
 
 ## Environment Variables
 Create a `.env` file in the `Backend` directory.
-**WARNING**: Do NOT commit your `.env` file to version control.
 
 ```ini
 PORT=5001
@@ -95,10 +94,8 @@ DB_USER=root
 DB_PASSWORD=your_mysql_password
 DB_NAME=trustid_platform
 
-# AI Configuration
 GEMINI_API_KEY=your_gemini_api_key
 
-# SMS Gateway (Optional for Demo)
 TWO_FACTOR_API_KEY=your_2factor_key
 ```
 
@@ -109,23 +106,20 @@ TWO_FACTOR_API_KEY=your_2factor_key
 ### 1. Citizen Login
 - **Mobile**: `7383654894`
 - **OTP**: `123456` (Mock OTP for verification)
+- All other phone numbers will receive a call containing the OTP
 
 ### 2. Government & Organization Login
 Use **Actor ID** and the **Mock 2FA Code**.
 
 | Role | Login ID (Actor ID) | 2FA Code |
 |------|---------------------|----------|
-| **Regulatory Authority** | `gov-root-admin` | `ADMIN1` |
-| **Hospital (Govt)** | `GOV-GJ-CIVIL-HOSPITAL` | `ADMIN1` |
-| **Transport Dept** | `GOV-RJ-TRANSPORT-DEPT` | `ADMIN1` |
-| **Apollo Hospital (Org)** | `ORG-APOLLO-AHM` | `ADMIN1` |
+| **Regulatory Authority** | `gov-root-admin` | `root_paas_123` |
+| **Hospital (Govt)** | `GOV-GJ-CIVIL-HOSPITAL` | `GJ-HOSPITAL@123` |
+| **Transport Dept** | `GOV-RJ-TRANSPORT-DEPT` | `RJ-TRANSPORT@123` |
+| **Apollo Hospital (Org)** | `ORG-APOLLO-AHM` | `APOLLO@123` |
 
 ---
 
-## Basic Error Handling
-- **400 Bad Request**: Missing parameters or validation failure. Check the `errors` array in the response.
-- **403 Forbidden**: Role mismatch (e.g., Citizen trying to access Admin API) or invalid/expired session.
-- **500 Internal Server Error**: Generic server failure. Stack traces are hidden in production for security.
 
 ## Security & Secrets
 - **Secrets Management**: This repository enforces strict separation of secrets. `.env` files are ignored by git to prevent accidental leakage of API keys and database credentials.
